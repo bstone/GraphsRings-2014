@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow-night-bright.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    
+    <script type="text/javascript" src="../mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+
+   <script type="text/javascript">
+      var substeps = ['one', 'two', 'three'];
+
+      function step(cur_step) {
+        d3.select("#" + cur_step).style("display", "inherit")
+      };
+    </script>
+
+  </head>
+  <body>
+	
+    <h2>Boij-Soederberg Theory</h2>
+
+	Let $S = \Bbbk[x_1,x_2,\ldots,x_d]$ (standard graded $\Bbbk$ algebra over a field $\Bbbk$).
+
+	The Betti diagram of an $S$-module $M$ is the table
+	
+<p style="font-size:28px">
+	$$\beta(M) = 
+	\begin{pmatrix}
+	 \beta_{0,0}(M) & \beta_{1,1}(M) & \cdots & \beta_{i,i}(M) & \cdots & \beta_{n,n}(M) \\
+	 \beta_{0,1}(M) & \beta_{1,2}(M) & \cdots & \beta_{i,i+1}(M) & \cdots & \beta_{n,n+1}(M) \\
+	 \vdots & \vdots && \vdots && \vdots  \\
+	 \beta_{0,j}(M) & \beta_{1,1+j}(M) & \cdots &  {\beta_{i,i+j}(M)} & \cdots & \beta_{j,n+j}(M) \\
+	 \vdots & \vdots && \vdots && \vdots 
+	\end{pmatrix}.$$
+</p>
+
+	where $\beta_{i,j}(M)$ is the number of minimal degree $j$ generators of $\text{Syz}_{i}(M)$.
+	
+
+
+	
+
+
+
+  </body>
+</html>

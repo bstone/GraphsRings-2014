@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow-night-bright.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    
+    <script type="text/javascript" src="../mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+
+   <script type="text/javascript">
+      var substeps = ['one', 'two', 'three'];
+
+      function step(cur_step) {
+        d3.select("#" + cur_step).style("display", "inherit")
+      };
+    </script>
+
+  </head>
+  <body>
+	
+    <h2>Everyday I'm Shuffling</h2>
+
+<p style="font-size:18px">
+	Let ${\bf c} = (0,3,5)$ and ${\bf d} = (0,1,6)$ be degree sequences.
+	Take first differences: $\Delta {\bf c} = (3,2)$, $\Delta {\bf d} = (1,5)$.
+
+	The order-preserving permutations (or shuffles) of $\Delta {\bf c}$ and $\Delta {\bf d}$ are
+	\[
+	(\alert{3},\alert{2},1,5),\, (\alert{3},1,\alert{2},5), \, (\alert{3},1,5,\alert{2}), \,  \, (1,\alert{3},\alert{2},5), \,(1,\alert{3},5,\alert{2}), \text{ and } (1,5,\alert{3},\alert{2}).
+	\]
+
+	Treat each shuffle as the first difference of a degree sequence starting with $c_0 + d_0 = 0$:
+	\[\Sigma((3,2,1,5),c_0+d_0) = (0,3,5,6,11).\]
+
+	\begin{align*}
+	   \text{Then } \pi({\bf c})\cdot\pi({\bf d}) & = \,\,\, \pi(0,\alert{3},\alert{5},6,11) \\
+	         &\ \ + \pi(0,\alert{3},4,\alert{6},11) \\
+	         &\ \ + \pi(0,\alert{3},4,9,\alert{11}) \\
+	         &\ \ + \pi(0,1,\alert{4},\alert{6},11) \\
+	         &\ \ + \pi(0,1,\alert{4},9,\alert{11}) \\
+	         &\ \ + \pi(0,1,6,\alert{9},\alert{11}).
+	\end{align*}
+</p>
+
+  </body>
+</html>
