@@ -1,4 +1,4 @@
-h1. Slides for talk about relation between Graphs and Rings
+h1. Slides about Graphs and Rings
 
 These slides were presented several times throughout the early months of 2014. A working web version is not currently available.
 
