@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../js/slide.js"></script>
 
    <script type="text/javascript">
-      var substeps = ['one', 'two', 'start', 'three', 'four'];
+      var substeps = ['start'];
 		
       function step(cur_step) {
         d3.select("#" + cur_step).style("display", "inherit")
@@ -35,51 +35,58 @@
 	A Graph $G$ consists of a non-empty finite set $V(G)$ (vertex set) and a finite set $E(G)$ (edge set) of unordered pairs of elements of $V(G)$
 	</p>
 
+<br>
+<br>
 	
 	<h1 id='two', style='display:inherit;', class='small'>Example</h1>		
+	<br>
+	Let $G = (V(G),E(G))$ where
 	
-	
-	<p id='three', style='display:inherit;'>
-	$V(G) = \{ 0,1,2,3,4,5 \}$
+	<p id='three', style='display:inherit;', class='mytab'>
+	$V(G) = \{ a,b,c,d,e,f \}$
 	</p>
-	<p id='four', style='display:inherit;'>
-	$E(G) = \{ 04,01,03,13,23,5  \}$
+	<p id='four', style='display:inherit;', class='mytab'>
+	$E(G) = \{ ad,ab,ae,bd,cd \}$
 	</p>
 	
 
 	<script type="text/javascript">
-
-        var w = 1200;
-        var h = 600;
+		var padding_left = 500;
+		var padding_top = 80;		
+        var w = 1200 - padding_left;
+        var h = 600 - padding_top;
         var color = d3.scale.category10();
 
         
         var data = [[0, 1, 0, 1, 1, 0], [1, 0, 0, 1, 0, 0], [0, 0, 0, 1, 0, 0], [1, 1, 1, 0, 0, 0], [1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]];
-        
+		var names = ["a", "b", "c", "d", "e", "f"];
+
         //convert adjacency matrix into edge pairs for d3 to process
         var nodeList = [];
         var edgeList = [];
-        for (var i = 0; i<data.length; i++) {
+	  for (var i = 0; i<data.length; i++) {
 
-            nodeList.push( {name: i } );
-            //console.log("I " + i);
-                      
-        }
-        for (var i = 0; i<data.length; i++) {
-            for (var j = 0; j< data[i].length; j++) {
-                if (data[i][j] == 1) {
-                    edgeList.push( { source: i, target: j} );
-                    //console.log("I " + i + "  J " + j);
-                }    
-            }
-        }
-        
+	      nodeList.push( {name: names[i], id: i, reflexive:false } );
+
+	  }
+	  for (var i = 0; i<data.length; i++) {
+	      for (var j = 0; j < i ; j++) {
+	          if (data[i][j] != 0) {
+	              edgeList.push( { source: nodeList[i], target: nodeList[j], left: false, right: false} );
+	          }    
+	      }
+	  }
+
+       
         //begin d3
         
         var svg = d3.select("body")
                     .append("svg")
                     .attr("height", h)
-                    .attr("width", w);
+                    .attr("width", w)
+					.style("margin-top", padding_top)
+					.style("margin-left", padding_left);
+				    
 
         var dataset = {
             nodes: nodeList,
@@ -121,17 +128,17 @@
                     .call(force.drag);
 
         nodes.append("circle")
-                    .attr("r", 10)
+                    .attr("r", 15)
                     .style("fill", function(d, i) {
 							if (i<10)
-								return color(i)
+								return color(3)
 							else
 								return color(5);
                     });
 
         nodes.append("text")
                     .attr("font-family", "sans-serif")
-                    .attr("font-size", "12px")
+                    .attr("font-size", "20px")
                     .attr("fill", "white")
                     .attr("text-anchor", "middle")
                     .attr("dy", "4px")
