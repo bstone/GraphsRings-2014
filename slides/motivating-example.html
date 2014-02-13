@@ -16,51 +16,34 @@
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
 
-   <script type="text/javascript">
-      var substeps = ['start'];
-		
-      function step(cur_step) {
-        d3.select("#" + cur_step).style("display", "inherit")
-      };
-    </script>
 
+    <script type="text/javascript">
+      var substeps = ['server', 'worm'];
+    </script>
   </head>
   <body>
 	
-    <h2>Technical Definition</h2>
+    <h2>Motivating Example</h2>
 
+	<h1 class='small'>Question</h1>		
 
-
-	<p id ='one', style='display:inherit;'>
-	A Graph $G$ consists of a non-empty finite set $V(G)$ (vertex set) and a finite set $E(G)$ (edge set) of unordered pairs of elements of $V(G)$
+	<p class='mytab'>
+		How many servers does a computer warm have to infect in order to control the whole network?
 	</p>
 
-<br>
-<br>
 	
-	<h1 id='two', style='display:inherit;', class='small'>Example</h1>		
-	<br>
-	Let $G = (V(G),E(G))$ where
-	
-	<p id='three', style='display:inherit;', class='mytab'>
-	$V(G) = \{ a,b,c,d,e,f \}$
-	</p>
-	<p id='four', style='display:inherit;', class='mytab'>
-	$E(G) = \{ ad,ab,ae,bd,cd \}$
-	</p>
-	
-
 	<script type="text/javascript">
-		var padding_left = 500;
+
+		var padding_left = 0;
 		var padding_top = 200;		
-        var w = 1200 - padding_left;
-        var h = 600 - padding_top;
+	    var w = 1200 - padding_left;
+	    var h = 600 - padding_top;
         var color = d3.scale.category10();
 
         
         var data = [[0, 1, 0, 0, 1, 0], [1, 0, 1, 0, 1, 0], [0, 1, 0, 1, 0, 0], [0, 0, 1, 0, 1, 1], [1, 1, 0, 1, 0, 0], [0, 0, 0, 1, 0, 0]];
 		var names = ["a", "b", "c", "d", "e", "f"];
-
+        
         //convert adjacency matrix into edge pairs for d3 to process
         var nodeList = [];
         var edgeList = [];
@@ -76,8 +59,7 @@
 	          }    
 	      }
 	  }
-
-       
+        
         //begin d3
         
         var svg = d3.select("body")
@@ -86,7 +68,6 @@
                     .attr("width", w)
 					.style("margin-top", padding_top)
 					.style("margin-left", padding_left);
-				    
 
         var dataset = {
             nodes: nodeList,
@@ -127,24 +108,62 @@
                     .append("g")
                     .call(force.drag);
 
-        nodes.append("circle")
-                    .attr("r", 15)
-                    .style("fill", function(d, i) {
-							if (i<10)
-								return color(3)
-							else
-								return color(5);
-                    });
+			        nodes.append("text")
+			                    .attr("font-family", "sans-serif")
+			                    .attr("font-size", "20px")
+			                    .attr("fill", "black")
+			                    .attr("text-anchor", "middle")
+			                    .attr("dy", "60px")
+			                    .text(function(d) { return d.name; });
 
-        nodes.append("text")
-                    .attr("font-family", "sans-serif")
-                    .attr("font-size", "20px")
-                    .attr("fill", "white")
-                    .attr("text-anchor", "middle")
-                    .attr("dy", "4px")
-                    .text(function(d) { return d.name; });
+		// A map from group ID to image URL.
+//		var imageByGroup = {
+//		  "0": "../img/server.png",
+//		  "1": "../img/server.png",
+//		  "2": "../img/server.png",
+//		  "3": "../img/server.png",
+//		  "4": "../img/server.png",
+//		  "5": "../img/server.png"
+//		};
 
+		// Set the xlink:href attribute dynamically by looking up the URL.
+//		image.attr("xlink:href", function(d) {
+//		  return imageByGroup[d.group];
+//		});
 
+nodes.append("circle")
+            .attr("r", 5)
+            .style("fill", function(d, i) {
+					if (i<10)
+						return color(3)
+					else
+						return color(5);
+            });
+		
+		
+		function step(cur_step) {
+		  if(cur_step == 'server') {
+			
+			force.start();
+			
+			nodes.append("image")
+				 	      	.attr("xlink:href", "../img/server.png")									
+						    .attr("x", -8)
+						    .attr("y", -8)
+						    .attr("width", 60)
+						    .attr("height", 60);
+			}
+			
+		  if(cur_step == 'worm') {
+			 nodes.append("image")
+				 	      	.attr("xlink:href", "../img/worm.svg")									
+						    .attr("x", -8)
+						    .attr("y", -8)
+						    .attr("width", 80)
+						    .attr("height", 80);
+			}
+			
+		};			   
                     
         force.on("tick", function() {
 
@@ -161,14 +180,16 @@
         }, (4000));
 
 		
-		function step(cur_step) {
-		  if(cur_step == 'start') {
-		    force.start();
-		  }
-		};
+//		function step(cur_step) {
+//		  if(cur_step == 'start') {
+//		    force.start();
+//		  }
+//		};
 
     </script>
 
+
+	
 
 
 

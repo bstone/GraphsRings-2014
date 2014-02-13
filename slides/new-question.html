@@ -16,42 +16,23 @@
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
 
-   <script type="text/javascript">
-      var substeps = ['start'];
-		
-      function step(cur_step) {
-        d3.select("#" + cur_step).style("display", "inherit")
-      };
-    </script>
 
+    <script type="text/javascript">
+      var substeps = ['start'];
+    </script>
   </head>
   <body>
 	
-    <h2>Technical Definition</h2>
+    <h2>Motivating Example</h2>
 
+	<h1 class='small'>Question</h1>		
 
-
-	<p id ='one', style='display:inherit;'>
-	A Graph $G$ consists of a non-empty finite set $V(G)$ (vertex set) and a finite set $E(G)$ (edge set) of unordered pairs of elements of $V(G)$
+	<p class='mytab'>
+		What is the smallest number of orange vertices needed such that every edge is adjacent to exactly one orange vertex?
 	</p>
-
-<br>
-<br>
-	
-	<h1 id='two', style='display:inherit;', class='small'>Example</h1>		
-	<br>
-	Let $G = (V(G),E(G))$ where
-	
-	<p id='three', style='display:inherit;', class='mytab'>
-	$V(G) = \{ a,b,c,d,e,f \}$
-	</p>
-	<p id='four', style='display:inherit;', class='mytab'>
-	$E(G) = \{ ad,ab,ae,bd,cd \}$
-	</p>
-	
 
 	<script type="text/javascript">
-		var padding_left = 500;
+		var padding_left = 0;
 		var padding_top = 200;		
         var w = 1200 - padding_left;
         var h = 600 - padding_top;
@@ -169,6 +150,9 @@
 
     </script>
 
+
+
+	
 
 
 
