@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../js/slide.js"></script>
 
    <script type="text/javascript">
-      var substeps = ['start'];
+      var substeps = ['one', 'two'];
 		
       function step(cur_step) {
         d3.select("#" + cur_step).style("display", "inherit")
@@ -31,24 +31,25 @@
 
 
 
-	<p id ='one', style='display:inherit;'>
+	<p id ='one', style='display:none;'>
 	A Graph $G$ consists of a non-empty finite set $V(G)$ (vertex set) and a finite set $E(G)$ (edge set) of unordered pairs of elements of $V(G)$
 	</p>
 
 <br>
 <br>
-	
-	<h1 id='two', style='display:inherit;', class='small'>Example</h1>		
+	<div id='two', style='display:none;'>	
+	<h1 class='small'>Example</h1>		
 	<br>
 	Let $G = (V(G),E(G))$ where
 	
-	<p id='three', style='display:inherit;', class='mytab'>
+	<p class='mytab'>
 	$V(G) = \{ a,b,c,d,e,f \}$
 	</p>
-	<p id='four', style='display:inherit;', class='mytab'>
+
+	<p class='mytab'>
 	$E(G) = \{ ad,ab,ae,bd,cd \}$
 	</p>
-	
+	<div>	
 
 	<script type="text/javascript">
 		var padding_left = 500;
@@ -100,7 +101,7 @@
                     .gravity(.1)
                     .linkDistance([150])
                     .charge([-1000])
-                    //.start();
+                    .start();
 
         // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-drag
         // implement 'dragstart' function that fixes nodes so they are
@@ -161,11 +162,11 @@
         }, (4000));
 
 		
-		function step(cur_step) {
-		  if(cur_step == 'start') {
-		    force.start();
-		  }
-		};
+//		function step(cur_step) {
+//		  if(cur_step == 'start') {
+//		    force.start();
+//		  }
+//		};
 
     </script>
 

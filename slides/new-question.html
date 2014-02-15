@@ -18,14 +18,14 @@
 
 
     <script type="text/javascript">
-      var substeps = ['start'];
+      var substeps = ['one', 'two', 'three', 'four'];
     </script>
   </head>
   <body>
 	
-    <h2>Motivating Example</h2>
+    <h2>Rewording the question</h2>
 
-	<h1 class='small'>Question</h1>		
+	<h1 class='small'>New Question</h1>		
 
 	<p class='mytab'>
 		What is the smallest number of orange vertices needed such that every edge is adjacent to exactly one orange vertex?
@@ -81,7 +81,7 @@
                     .gravity(.1)
                     .linkDistance([150])
                     .charge([-1000])
-                    //.start();
+                    .start();
 
         // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-drag
         // implement 'dragstart' function that fixes nodes so they are
@@ -108,22 +108,113 @@
                     .append("g")
                     .call(force.drag);
 
-        nodes.append("circle")
-                    .attr("r", 15)
-                    .style("fill", function(d, i) {
-							if (i<10)
-								return color(3)
-							else
-								return color(5);
-                    });
 
-        nodes.append("text")
-                    .attr("font-family", "sans-serif")
-                    .attr("font-size", "20px")
-                    .attr("fill", "white")
-                    .attr("text-anchor", "middle")
-                    .attr("dy", "4px")
-                    .text(function(d) { return d.name; });
+
+		
+	        nodes.append("circle")
+	                    .attr("r", 15)
+	                    .style("fill", function(d, i) {
+								if (i<10)
+									return color(3)
+								else
+									return color(5);
+	                    });
+			
+			nodes.append("text")
+	                    .attr("font-family", "sans-serif")
+	                    .attr("font-size", "20px")
+	                    .attr("fill", "white")
+	                    .attr("text-anchor", "middle")
+	                    .attr("dy", "4px")
+	                    .text(function(d) { return d.name; });
+
+
+function step(cur_step) {  
+	if(cur_step == 'one') { // all orange
+	        nodes.append("circle")
+	                    .attr("r", 15)
+	                    .style("fill", function(d, i) {
+								if (i<10) return color(5);
+	                    });
+
+			nodes.append("text")
+	                    .attr("font-family", "sans-serif")
+	                    .attr("font-size", "20px")
+	                    .attr("fill", "white")
+	                    .attr("text-anchor", "middle")
+	                    .attr("dy", "4px")
+	                    .text(function(d) { return d.name; });
+	};
+	
+	if(cur_step == 'two') { // all blue
+	        nodes.append("circle")
+	                    .attr("r", 15)
+	                    .style("fill", function(d, i) {
+								if (i==0) return color(3); // a 
+								if (i==1) return color(3); // b
+								if (i==2) return color(3); // c
+								if (i==3) return color(3); // d
+								if (i==4) return color(3); // e
+								if (i==5) return color(3); // f
+	                    });
+
+			nodes.append("text")
+	                    .attr("font-family", "sans-serif")
+	                    .attr("font-size", "20px")
+	                    .attr("fill", "white")
+	                    .attr("text-anchor", "middle")
+	                    .attr("dy", "4px")
+	                    .text(function(d) { return d.name; });
+	};
+	
+	if(cur_step == 'three') { // two orange
+	        nodes.append("circle")
+	                    .attr("r", 15)
+	                    .style("fill", function(d, i) {
+								if (i==0) return color(3); // a 
+								if (i==1) return color(5); // b
+								if (i==2) return color(3); // c
+								if (i==3) return color(5); // d
+								if (i==4) return color(3); // e
+								if (i==5) return color(3); // f
+	                    });
+
+			nodes.append("text")
+	                    .attr("font-family", "sans-serif")
+	                    .attr("font-size", "20px")
+	                    .attr("fill", "white")
+	                    .attr("text-anchor", "middle")
+	                    .attr("dy", "4px")
+	                    .text(function(d) { return d.name; });
+	};
+
+	if(cur_step == 'four') { // three orange
+	        nodes.append("circle")
+	                    .attr("r", 15)
+	                    .style("fill", function(d, i) {
+								if (i==0) return color(3); // a 
+								if (i==1) return color(5); // b
+								if (i==2) return color(3); // c
+								if (i==3) return color(5); // d
+								if (i==4) return color(5); // e
+								if (i==5) return color(3); // f
+	                    });
+
+			nodes.append("text")
+	                    .attr("font-family", "sans-serif")
+	                    .attr("font-size", "20px")
+	                    .attr("fill", "white")
+	                    .attr("text-anchor", "middle")
+	                    .attr("dy", "4px")
+	                    .text(function(d) { return d.name; });
+	};
+	
+
+};
+
+
+
+        
 
 
                     
@@ -142,11 +233,6 @@
         }, (4000));
 
 		
-		function step(cur_step) {
-		  if(cur_step == 'start') {
-		    force.start();
-		  }
-		};
 
     </script>
 
