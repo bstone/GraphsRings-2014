@@ -18,7 +18,7 @@
 
 
     <script type="text/javascript">
-      var substeps = ['server', 'worm'];
+      var substeps = ['one', 'two', 'three'];
     </script>
   </head>
   <body>
@@ -81,7 +81,7 @@
                     .gravity(.1)
                     .linkDistance([150])
                     .charge([-1000])
-                    //.start();
+                    .start();
 
         // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-drag
         // implement 'dragstart' function that fixes nodes so they are
@@ -131,39 +131,80 @@
 //		  return imageByGroup[d.group];
 //		});
 
-nodes.append("circle")
-            .attr("r", 5)
-            .style("fill", function(d, i) {
-					if (i<10)
-						return color(3)
-					else
-						return color(5);
-            });
+//nodes.append("circle")
+//           .attr("r", 5)
+//            .style("fill", function(d, i) {
+//					if (i<10)
+//						return color(3)
+//					else
+//						return color(5);
+//            });
 		
 		
-		function step(cur_step) {
-		  if(cur_step == 'server') {
 			
-			force.start();
-			
-			nodes.append("image")
+		nodes.append("image")
 				 	      	.attr("xlink:href", "../img/server.png")									
 						    .attr("x", -8)
 						    .attr("y", -8)
 						    .attr("width", 60)
 						    .attr("height", 60);
-			}
-			
-		  if(cur_step == 'worm') {
+	
+
+	function step(cur_step) {
+		
+		  if(cur_step == 'one') { // adds one worms
 			 nodes.append("image")
-				 	      	.attr("xlink:href", "../img/worm.svg")									
+				 	      	.attr("xlink:href", function(d, i) {
+										//if (i==0) return "../img/worm.svg"; // a 
+										if (i==1) return "../img/worm.svg"; // b
+										//if (i==2) return "../img/server.png"; // c
+										//if (i==3) return "../img/worm.svg"; // d
+										//if (i==4) return "../img/worm.svg"; // e
+										//if (i==5) return "../img/worm.svg"; // f
+					            })
 						    .attr("x", -8)
 						    .attr("y", -8)
 						    .attr("width", 80)
 						    .attr("height", 80);
-			}
+			};
+			
+						
+		  if(cur_step == 'two') { // adds one more for two total
+			 nodes.append("image")
+				 	      	.attr("xlink:href", function(d, i) {
+										//if (i==0) return "../img/worm.svg"; // a 
+										//if (i==1) return "../img/worm.svg"; // b
+										//if (i==2) return "../img/server.png"; // c
+										if (i==3) return "../img/worm.svg"; // d
+										//if (i==4) return "../img/worm.svg"; // e
+										//if (i==5) return "../img/worm.svg"; // f
+					            })
+						    .attr("x", -8)
+						    .attr("y", -8)
+						    .attr("width", 80)
+						    .attr("height", 80);
+			};
+			
+		  if(cur_step == 'three') { // adds one more for 3 total
+			 nodes.append("image")
+				 	      	.attr("xlink:href", function(d, i) {
+										//if (i==0) return "../img/worm.svg"; // a 
+										//if (i==1) return "../img/worm.svg"; // b
+										//if (i==2) return "../img/server.png"; // c
+										//if (i==3) return "../img/worm.svg"; // d
+										if (i==4) return "../img/worm.svg"; // e
+										//if (i==5) return "../img/worm.svg"; // f
+					            })
+						    .attr("x", -8)
+						    .attr("y", -8)
+						    .attr("width", 80)
+						    .attr("height", 80);
+			};
+		
 			
 		};			   
+
+
                     
         force.on("tick", function() {
 
