@@ -316,7 +316,7 @@
                     .data(dataset.nodes)
                     .enter()
                     .append("g")
-                    .attr("transform", "translate(-60,-60)")
+                    .attr("transform", "translate(-70,-70)")
                     .call(force.drag);
 
         nodes.append("circle")
@@ -349,9 +349,7 @@
         nodes.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });                 
         
         });
-        setTimeout(function() {
-            force.stop();
-        }, (4000));
+
 
 		
 //		function step(cur_step) {
