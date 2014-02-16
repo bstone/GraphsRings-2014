@@ -316,6 +316,7 @@
                     .data(dataset.nodes)
                     .enter()
                     .append("g")
+                    .attr("transform", "translate(-60,-60)")
                     .call(force.drag);
 
         nodes.append("circle")
