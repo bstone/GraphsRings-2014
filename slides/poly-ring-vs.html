@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow-night-bright.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    
+    <script type="text/javascript" src="../mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+
+   <script type="text/javascript">
+      var substeps = ['zero', 'one', 'two'];
+
+      function step(cur_step) {
+        d3.select("#" + cur_step).style("display", "inherit")
+      };
+   </script>
+
+  </head>
+  <body>
+	
+    <h2>Polynomial rings are Vector Spaces</h2>
+	
+	<br> 
+	
+<!--	<div id="one" style="display:none">
+	<h1 class="small">Standard Graded Ring:</h1>
+	
+	<p class="mytab">
+		$R = \bigoplus_{i \geq 0} R_i$, $R = R_0[R_1]$, and $R_0$ is a field
+	</p> 
+	</div> -->
+	
+	
+	<div id="zero" style="display:none">
+		<font color="blue">Fact:</font> Polynomial rings are infinite dimensional vector spaces over $k$.
+	</div>
+	<br>
+	<div id="one" style="display:none">		
+	<h1 class="small">Example</h1>
+	
+	</p>
+	
+		\begin{align*}
+			  R =  k&\hspace{-3mm}[x,y]\\
+			 = k & \oplus k \langle x,y \rangle \oplus k \langle x^2, xy, y^2 \rangle \oplus\\
+			  & \oplus k \langle x^3, x^2y, xy^2, y^3 \rangle \oplus \cdots
+		\end{align*}
+		
+		<p id="two" style="display:none">
+		
+		Multiplication preserves degree:
+		
+		$$(x^2-xy)\cdot R_i \subseteq R_{i+2}$$
+		
+		</p>
+	
+	</div>
+				
+		
+		
+  </body>
+</html>

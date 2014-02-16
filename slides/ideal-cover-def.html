@@ -16,36 +16,31 @@
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
 
+   <script type="text/javascript">
+      var substeps = ['one'];
+		
+      function step(cur_step) {
+        d3.select("#" + cur_step).style("display", "inherit");
 
+      };
+    </script>
 
   </head>
   <body>
 	
-    <h2>Vertex Cover Problem</h2>
+    <h2>Cover Ideals</h2>
 
-	<h1 class = "small">Problem</h1>
-	
+<br>
+	<div id='one', style='display:none;'>	
+	<h1 class="small">Definition</h1>
 	<p class="mytab">
-		Given a graph $G$, find the smallest possible (minimum) vertex cover.  
+		Let $G = (V,E)$ be a graph with $V = \{x_1,\ldots,x_n\}$. The cover ideal associated to $G$ is the ideal
+		$$ J(G) = \bigcap_{x_ix_j \in E} (x_i,x_j) \subset k[x_1,x_2,\ldots,x_n].$$
 	</p>
-	
+	</div>
 
-	<h1 class = "small">Observations</h1>
-	
-	<p class="mytab">
-		Classical optimization problem in computer science
-	</p>
-	
-	<p class="mytab">
-		The Problem is NP-hard
-	</p>
-	
-	<p class="mytab">
-		Many applications: Security Cameras, ATM placement, Phylogenetics, etc. 
-	</p>	
 
-	
-		
+
 
   </body>
 </html>
